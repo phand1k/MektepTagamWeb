@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AspNetUser> SignInManager
+@inject UserManager<AspNetUser> UserManager
+@{
+    ViewData["Title"] = "Домашняя страница";
+}
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- End Page Title -->
+}
+else
+{
+    <div class="text-center">
+        <h1 class="display-4">Начните работу</h1>
+        <p>Войдите нажав <a href="/Identity/Account/Login">кнопку</a>.</p>
+        <p>Или же пополните баланс нажав <a href="/Home/AddToBalance">кнопку</a>.</p>
+    </div>
+}
